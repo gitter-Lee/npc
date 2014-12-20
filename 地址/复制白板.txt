@@ -1,0 +1,192 @@
+formatter : function(value, row, index) {
+				var checked = value == 1 ? ' checked="checked" ' : '';
+				var disabled = ' disabled="disabled" ';
+				return '<input id="c_' + row.id + '" type="checkbox" ' + checked + disabled + ' />';
+			}
+
+
+//id,status,在service检验
+
+
+//日期序列化
+http://blog.csdn.net/zhanngle/article/details/24123659
+
+
+	formatter : function(value, row, index) {
+					return value+"-"+row.supplierAlias;
+				}
+
+
+onLoadSuccess : function(data) {
+			//$(this).datagrid('clearSelections');
+			$(this).datagrid('tooltip', ['description', 'descriptionCn', 'location', 'locationCn', 'supplierName']);
+		},
+
+
+
+formatter : function(value, row, index) {
+					if(row.supplierAlias != undefined && row.supplierAlias != ''){
+						return value+"-"+row.supplierAlias;
+					}else{
+						return value;
+					}
+				}
+
+
+CASE WHEN C_SUPPLIERALIAS IS NULL THEN C_SUPPLIERNAME ELSE CONCAT(C_SUPPLIERNAME,'-',C_SUPPLIERALIAS) END as second
+
+//case when
+http://www.2cto.com/database/201203/124327.html
+
+CMTP 来料加工1484
+修改仓库别名
+了解po流程
+
+.Active contract More info on access ? Home ? New Search ? Service Request ? Downloads ? Communities Login to use self-solve search Save time performing searches by...
+
+
+http://www.open-open.com/doc/view/ac325b24331846048cd13280bbacbef8
+
+
+--------------------------------------
+假如这个网页在QTP的Object Reporsitory里叫做 abc,下拉列表叫lstName：
+dim intSelectedIndex,strValue
+'取得当前被选中项的序号
+intSelectedIndex=CInt(Browser("abc").Page("abc").WebList("lstName").GetROProperty("selected item index"))
+'取得指定序号的项的Value属性值
+strValue=Browser("abc").Page("abc").WebList("lstName").object.option(intSelectedIndex)
+ 
+则:strValue的值为1(字符型的)
+因为.object可以反回DOM对象，比如WebList的object会返回一个Select对象。之后，在DOM中能做的事，在QTP里也都能作了。记得要用VBscript的语法格式，而不是javascript的。详见QTP帮助文档的WebList.object部分的描述。s
+
+http://www.ltesting.net/ceshi/ceshijishu/rjcsgj/mercury/quicktestpro/2009/0923/166084.htmls
+
+学习poi
+
+
+
+GIT
+1.修改文件后
+2.git checkout filename 撤销（撤销工作区的修改）
+3.git add filename
+4.git reset HEAD filename 撤销（撤销暂存，保留工作区的修改）
+5.git reset --hard filename 撤销暂存，撤销工作区的修改。
+
+
+git分支误删除
+git log -g
+找到commitId
+git branch recover_branch commitId
+
+遇到冲突的解决方法
+1.git merge --abort
+2.opendiff,vimdiff
+
+egit
+http://blog.csdn.net/luckarecs/article/details/7427605
+//git 全
+http://www.ibm.com/developerworks/cn/opensource/os-cn-tourofgit/
+
+1.添加大货管理 Order,orderItem，storeOrderNo，storeallcofatory相关
+2.设计大货用料结构。
+3，修改相关bug。
+//join
+http://www.jb51.net/article/50427.htm
+
+//MYBATIS
+http://blog.csdn.net/andylauxing/article/details/9465835
+//mybatis知识点
+http://legend2011.blog.51cto.com/3018495/973579
+
+19F2A60E-3F9E-4A7A-9D0A-ED936A76412C
+F8D5FA01-F956-DE11-800E-001143EC4E5C
+
+
+ @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(String.format("Website=> {Id：%d, Name：%s, CreateTime：%s}\r\n", id, name,
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(createTime)));
+        if (visitor != null)
+            sb.append(String.format("Visitor=> %s", visitor.toString()));
+        return sb.toString();
+    }
+
+
+// 反选
+Jquery部分： 
+//反向选择
+$("#antiAll").click(function(){
+  $("input[name='checkbox1']").each(function(){
+   $(this).attr("checked",!this.checked);              
+  });
+});
+
+//初始化datagrid checkbox 勾选 2种
+http://blog.csdn.net/baronyang/article/details/9323463
+
+//all api
+http://api.jq-school.com/
+
+//easyui extends
+http://www.w3cschool.cc/jeasyui/jeasyui-ref-extension.html
+
+
+//easyui 正则
+http://wenku.baidu.com/link?url=Wa4WGjuwLh657u8V41EVbWp11cWgq6Hzmohrf2XUSdqAtwqqwcz0u8YUlwoK264LWFGDmqbWuOPZ0RKwZNIEsbu3JT3FKehldIHduiB3MmC
+
+//jquery 最佳实践
+http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html
+
+
+List<object> a==>JSON.toJSONString(a) b ==>var c=$(b)
+
+var items = [];
+items.push({
+				'level1CategoryId' : level1CategoryId,
+				'level1CategoryName' : level1CategoryName,
+				'level2CategoryId' : level2CategoryId,
+				'level2CategoryName' : level2CategoryName,
+				'description' : description,
+				'amount' : amount,
+				'index' : i
+			});
+
+var form = {
+		'cpvNo' : cpvNo,
+		'recipient' : recipient,
+		'applicantDeptId' : applicantDeptId,
+		'applicantDeptName' : applicantDeptName,
+		'applicationDate' : applicationDate,
+		'currencyId' : currencyId,
+		'currencyName' : currencyName,
+		'totalAmount' : totalAmount,
+		'totalAmountWord' : $('#td_amountTotalCn').html()
+	};
+
+form.itemStr = JSON.stringify(items);
+
+paymentVoucherItems = JSON.parseArray(itemStr, PaymentVoucherItem.class);
+//js
+http://runjs.cn/code/l51wpdgz
+//mybatis parameter***#
+http://zhuyuehua.iteye.com/blog/1717525
+
+//2014.10.8
+!!!生成文件要看数据库保存没有!!!
+
+//sql技巧
+http://www.cnblogs.com/vTree/archive/2011/11/11/2245488.html
+
+//map remove 注意事项
+http://www.hbrc.com/rczx/shownews-731148-11.html
+http://well-lf.iteye.com/blog/1058020
+
+//js Map 构造
+非糜烂性胃食管反流病nerd
+噫！菊之爱,陶后鲜有闻,莲之爱,同予者何人,牡丹之爱,宜乎众矣。
+
+//ipad跳墙
+http://www.macx.cn/MINI/default.asp?605-983368-0-0-0-0-0-a-.htm
+
+easyui
+http://jqext.sinaapp.com/

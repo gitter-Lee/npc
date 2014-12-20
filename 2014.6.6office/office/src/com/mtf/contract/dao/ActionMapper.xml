@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtf.contract.dao.ActionMapper">
+	<resultMap id="BaseResultMap" type="Action">
+		<id column="id" property="id" jdbcType="CHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="INTEGER" />
+		<result column="system" property="system" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="WithResourcesResultMap" type="Action" extends="BaseResultMap">
+		<collection property="resources" javaType="java.util.List" ofType="Resource">
+			<id column="resourceId" property="id" jdbcType="CHAR" />
+			<result column="C_RESOURCE_NAME" property="name" jdbcType="VARCHAR" />
+			<result column="C_RESOURCE_DESCRIPTION" property="description" jdbcType="VARCHAR" />
+			<result column="C_RESOURCE_URI" property="uri" jdbcType="VARCHAR" />
+			<result column="C_RESOURCE_LEVEL" property="level" jdbcType="INTEGER" />
+			<result column="C_RESOURCE_ACTION_ID" property="actionId" jdbcType="CHAR" />
+		</collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, description, level, system, status
+	</sql>
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM t_action
+		WHERE id = #{id,jdbcType=CHAR}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM t_action
+		WHERE 1 = 1
+		<if test="system != null">
+			AND system = #{system,jdbcType=INTEGER}
+		</if>
+		<if test="sort != null and sort != ''">
+			<if test="system != null">
+			ORDER BY ${sort} ${order}
+			</if>
+			<if test="system == null">
+			ORDER BY system DESC, ${sort} ${order}
+			</if>
+		</if>
+	</select>
+	<select id="selectAllWithResources" resultMap="WithResourcesResultMap" parameterType="java.util.HashMap">
+		SELECT
+		t_action.id,
+		t_action.name,
+		t_action.description,
+		t_action.level,
+		t_action.system,
+		t_action.status,
+		t_resource.id AS resourceId,
+		t_resource.name AS C_RESOURCE_NAME,
+		t_resource.description AS C_RESOURCE_DESCRIPTION,
+		t_resource.uri AS C_RESOURCE_URI,
+		t_resource.level AS C_RESOURCE_LEVEL,
+		t_resource.actionId AS C_RESOURCE_ACTION_ID
+		FROM t_action
+		LEFT JOIN t_resource ON t_resource.actionId = t_action.id
+		<if test="sort != null and sort != ''">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	<select id="selectByIdWithResources" resultMap="WithResourcesResultMap" parameterType="java.lang.String">
+		SELECT
+		t_action.id,
+		t_action.name,
+		t_action.description,
+		t_action.level,
+		t_action.system,
+		t_action.status,
+		t_resource.id AS resourceId,
+		t_resource.name AS C_RESOURCE_NAME,
+		t_resource.description AS C_RESOURCE_DESCRIPTION,
+		t_resource.uri AS C_RESOURCE_URI,
+		t_resource.level AS C_RESOURCE_LEVEL,
+		t_resource.actionId AS C_RESOURCE_ACTION_ID
+		FROM t_action
+		LEFT JOIN t_resource ON t_resource.actionId = t_action.id
+		WHERE t_action.id = #{id,jdbcType=CHAR}
+	</select>
+	<select id="countByName" resultType="int" parameterType="java.lang.String">
+		SELECT COUNT(id)
+		FROM t_action
+		WHERE name = #{name,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteById" parameterType="java.lang.String">
+		DELETE FROM t_action
+		WHERE id = #{id,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="Action">
+		INSERT INTO t_action (id, name, description, level, system, status)
+		VALUES (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{system,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+	</insert>
+	<update id="updateById" parameterType="Action">
+		UPDATE t_action
+		SET name = #{name,jdbcType=VARCHAR},
+		description = #{description,jdbcType=VARCHAR},
+		level = #{level,jdbcType=INTEGER},
+		system = #{system,jdbcType=INTEGER},
+		status = #{status,jdbcType=INTEGER}
+		WHERE id = #{id,jdbcType=CHAR}
+	</update>
+</mapper>

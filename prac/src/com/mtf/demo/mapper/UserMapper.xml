@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtf.demo.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="DbUser">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+		<result column="ROLE" property="role" jdbcType="INTEGER" />
+		<result column="STATUS" property="status" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="AdvResultMap" extends="BaseResultMap" type="DbUser">
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, NAME, EMAIL, ROLE, STATUS
+	</sql>
+	<sql id="Adv_Column_List">
+		ID, NAME, PASSWORD, EMAIL, ROLE, STATUS
+	</sql>
+	<select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<select id="getByNameAndPassword" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_user
+		where NAME = #{name,jdbcType=VARCHAR}
+		and PASSWORD = MD5(#{pwd,jdbcType=VARCHAR})
+	</select>
+</mapper>

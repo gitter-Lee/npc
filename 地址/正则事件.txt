@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> 验证数字最简单正则表达式大全 </title>
+</head>
+<body>
+<h3>输入完按回车后即可验证！（自认为最简单！）</h3>
+正整数:	<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^\d+$/.test(this.value));" />
+<br />
+负整数:	<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-\d+$/.test(this.value));" />
+<br />
+整　数:	<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-?\d+$/.test(this.value));" />
+<br />
+正小数:	<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^\d+\.\d+$/.test(this.value));" />
+<br />
+负小数:	<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-\d+\.\d+$/.test(this.value));" />
+<br />
+小　数:	<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-?\d+\.\d+$/.test(this.value));" />
+<br />
+实　数:	<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-?\d+(\.\d+)?$/.test(this.value));" />
+<br />
+保留1位小数:<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-?\d+(\.\d{1,1})?$/.test(this.value));" />
+<br />
+保留2位小数:<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-?\d+(\.\d{1,2})?$/.test(this.value));" />
+<br />
+保留3位小数:<input type="text" size="20" onkeydown="if(event.keyCode == 13) alert(/^-?\d+(\.\d{1,3})?$/.test(this.value));" />
+<br />
+</body>
+</html>

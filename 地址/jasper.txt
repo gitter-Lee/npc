@@ -1,0 +1,260 @@
+#808080
+#000000
+#D5D5D5
+CN_SONGTI
+C03943
+C03953
+用分组功能
+jaspersoft 自报表要减去边宽（40），一边20
+全部辅料 可裁辅料
+1L:功能键
+2L:局部功能
+3L：领域
+purchaseMaterialIdsJson
+obj =json.parseArray(jstr,xxx.class);
+// 循环
+obj.getJSONObject(i)
+json.parseObject(jstr);
+json.stringify(obj);//JSP
+json.toJSONString(obj/arr/Map);
+JacksonUtils.objectToJson(list/obj);
+JacksonUtils.jsonArrayToList(jstr,xxx.class);
+style报表制作，
+分别在Style里的basic,fabric,trim增加报表页,增加报表数据筛选功能，
+统一report报表标准
+到单证部了解基本需求
+tsshutdn
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃return '<span style="color:blue;cursor:pointer"					      ┃
+┃onclick="javascript:openPo(\'' + row.id + '\',\'' + row.poNo + '\');">' + value + '</span>';┃		       	
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+$F{chargeType}==1?"ARRANGE BY MANCHU TIMES FASHION INC.":"CHARGEABLE"
+$F{materialType}==1?"Material":"Trim"
+
+variables:java.math.Bigdecimal （可以保留小数）
+
+ORDER BY C_MATERIALTYPE, C_CHARGETYPE
+
+net.sf.jasperreports.engine.JasperReport
+net.sf.jasperreports.engine.JRDataSource
+
+ID # C03000-1,C03000-2
+list→Map
+	Map<String, List<StyleSize>> sizeRangeMap = new HashMap<>();
+			for (StyleSize styleSize : styleSizeList) {
+				String sizeRangeId = styleSize.getSizeRangeId();
+				List<StyleSize> rangeSizeList = sizeRangeMap.get(sizeRangeId);
+				if(rangeSizeList == null) {
+					rangeSizeList = new ArrayList<>();
+					rangeSizeList.add(styleSize);
+					
+					sizeRangeMap.put(sizeRangeId, rangeSizeList);
+				} else {
+					rangeSizeList.add(styleSize);
+			}
+	}
+
+group
+function preview(){
+	//如果是提交时还要调整字段就用这个方法	
+		
+		$('#frm_purchase').form('load', {
+			'paymentTermName' : $('#cbx_paymentTerm').combobox('getText'),
+			'deliveryToName' : $('#cbx_deliveryTo').combobox('getText'),
+			'attnToName' : (contact == null ? '' : $('#cbx_attnTo').combobox('getText')),
+			'phone' : (contact == null ? '' : contact.tel),
+			'fax' : (contact == null ? '' : contact.fax),
+			'email' : (contact == null ? '' : contact.email),
+			'updateDateTime' : p_datas.purchase.updateDateTime
+		});
+		
+		var jsonStr = JSON.stringify(serializeObject($('#frm_purchase')));
+		jsonStr.updateDateTime = null;
+		$('#frm_preview').form('load', {jsonStr:jsonStr});
+		$('#frm_preview').submit();
+}
+Purchase purchase = JacksonUtils.jsonToObject(jsonStr, Purchase.class, ConfigUtils.getDateFormat());
+
+
+
+
+	10。报表中数据转换类型：
+$V{PAGE_COUNT}.intValue()报表中V属性转为int?
+Integer.valueOf($P{pageCount}).intValue()?报表中P属性转为int??Double.valueOf($F{realSum})?报表中F类型转为Double?
+($V{realSums}.doubleValue()+$V{realSumMs}.doubleValue())?double类型相加求和?Boolean.valueOf(((List)$F{mentalState}).contains("02"))将boolean值转为Boolbean?
+	11。报表中数据的操作：
+文字框中的加法操作时：加号左右必须是数值类型如不是，加号就变成连接作用，而不是做加法操作了。?
+(($V{realSums}!=null?$V{realSums}:Double.valueOf(0)).doubleValue()??+?
+?($V{realSumMs}!=null?$V{realSumMs}:Double.valueOf(0)).doubleValue())+"?元"?
+
+
+pagefooter会在非最后一页的页尾显示而此时lastpagefooter不显示;
+lastpagefooter会在最后一页显示此时pagefooter不显示;
+总之pagefooter和lastpagefooter不在同一时间显示 ;
+
+
+new Boolean(!$P{isDisplay}.equalsIgnoreCase("yes")),
+
+
+shift+方向=10px移动
+
+JSON.DEFFAULT_DATE_FORMAT = "yyyy/MM/dd";
+
+	if(StringUtils.isBlank(paymentVoucherStr)){
+			paymentVoucher = new PaymentVoucher();
+		}else{
+			paymentVoucher = JSON.parseObject(paymentVoucherStr, PaymentVoucher.class);
+		}
+		
+		if(StringUtils.isBlank(paymentVoucherItemStr)){
+			paymentVoucherItems = new ArrayList<>();
+		}else{
+			paymentVoucherItems = JSON.parseArray(paymentVoucherItemStr, PaymentVoucherItem.class);
+		}
+
+$('#cbx_storeArea').combobox('loadData', getComboData(p_storeAreas, true));
+$('#cbx_garmentTestFileId').combobox("reload","${pageContext.request.contextPath}/workgroup/store/storefile/doListPair.do?type=4&aps=1&orderNo="+checkedRows[0].orderNo);
+
+{ ids : ids.join(',')}
+String[] idArray = ids.split(",");
+
+
+function submitSearchForm() {
+
+
+
+		var $dtgStoreOrderNo = $('#dtg_storeOrderNo');
+		var opt = $dtgStoreOrderNo.datagrid('options');
+		if (opt.url == undefined || opt.url == null || opt.url == '') {
+			opt.url = '${pageContext.request.contextPath}/workgroup/store/storeorderno/doSearchWithOrder.do';
+		}
+		$dtgStoreOrderNo.datagrid('load', serializeObject($('#frm_search')));
+		$dtgStoreOrderNo.datagrid('clearSelections');
+	}	
+
+
+<select id="searchByOrderId" resultMap="BaseResultMap" >
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM t_purchasematerial WHERE 1 = 1
+</select>
+
+C_CALCQUANTITY 实际使用数量
+stm.C_QUANTITY 库存数量
+store的comment
+┏━━━━━━━━━┓
+┃ctrl+shift+p 括号 ┃
+┃ctrl+shift+P/↑   ┃
+┗━━━━━━━━━┛
+
+$.ajax({
+							type: "POST",
+							url: "${pageContext.request.contextPath}/workgroup/order/purchasematerial/doEditRequest.do",
+							data: {jsonStr : JSON.stringify(materials)},
+							dataType: "json",
+							success: function(data){
+								$.messager.progress('close');
+								try {
+									var j = data;
+									if (j.success) {
+										$.messager.alert('<s:message code="common.tip" />', 'OK', 'info', function(rr) {
+											self.location.reload();
+										});
+									}
+								} catch (e) {
+									$.messager.alert('<s:message code="common.error" />', e, 'error');
+								}
+							}
+						});
+
+$("table").on("click", "td", function(){
+　　　　$(this).toggleClass("click");
+});
+$(document).on("click", "td", function(){
+　　　　$(this).toggleClass("click");
+});
+$(document).off("click", "td");
+
+层次选择器： 
+1 $("#div li")获取div下的所有li元素（后代，子，子的子....） 
+2 $("#div > li")获取div下的直接li子元素//注意空格 
+3 $(".menuitem + div")获取样式名为menuitem之后的第一个div元素，不常用。 
+3 $(".menuitem ~ div")获取样式名为menuitem之后的所有的div元素，不常用。 
+
+HTML元素的集合在页面上，这样每次都会去再页面上查找相应的元素，这是非常耗时的。所以对于for循环，你需要预先保存数组的长度，这样写：
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃for (var i = 0, max = myarray.length; i < max; i++) { ┃
+┃   // do something with myarray[i]  			┃
+┃}							┃					┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+alt+shift+J
+ctl+shift+L
+
+翻译
+
+2 条数据状态将变成无效, 确认要继续?
+the status of  item(s) will become [INACTIVE],confirm to continue?
+
+var msg = formatString('<s:message code="order.nItemsChangeToInactive" />', '<b><u>'+ checkedEls.length + '</u></b>');
+
+store.nitemsChangeColor
+{0}条数据将更新颜色信息, 确认要更新？
+Color of {0}item(s) will be updated,confirm to update?
+
+确认要更新单用量？
+Confirm to update Csp?
+
+store.nitemsChangeDesc
+条数据将更新描述信息, 确认要更新？
+Description of {0} item(s) will be updated,confirm to update?
+var msg = formatString('<s:message code="store.nitemsChangeDesc" />', '<b><u>' + p_ids.length + '</u></b>');
+
+At Least one search condition!
+Not Found
+
+
+
+order.materialWillBeAdded
+order.materialWillBeUpdated
+order.materialWillBeDeleted
+material(s) will be added,
+条物料添加,
+material(s) will be updated,
+条物料更新,
+material(s) will be deleted,
+条物料删除,
+
+确认要同步BOM物料？
+confirm to sync BOM material?
+
+$("td", $(this)).css("background", "red");
+
+
+ 
+$("p,div,span,menuitem")
+
+
+Pant (Casual)-Girls
+35 - Studio Pants
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃($F{SALARY}.intValue()>4000?new Boolean(true):newBoolean(false))┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+样品类型
+C_SAMPLETYPE_ID, C_SAMPLETYPENAME,   sampleTypeId  sampleTypeName
+
+tdof report 重新排版加新变量
+tdof 加入sampleType
+tdof.下拉国际化改回去
+
+
+$('#frm_main').form('clear').form('load', { });
+
+最佳 实践
+
+
+$('li.item-ii').find('li') 等价于 $('li', 'li.item-ii')。

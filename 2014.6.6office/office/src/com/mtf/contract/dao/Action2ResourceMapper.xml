@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtf.contract.dao.Action2ResourceMapper">
+	<resultMap id="BaseResultMap" type="Action2Resource">
+		<id column="id" property="id" jdbcType="CHAR" />
+		<result column="actionId" property="actionId" jdbcType="CHAR" />
+		<result column="resourceId" property="resourceId" jdbcType="CHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, actionId, resourceId
+	</sql>
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM t_action_resource
+		WHERE id = #{id,jdbcType=CHAR}
+	</select>
+	<select id="selectByResourceId" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM t_action_resource
+		WHERE resourceId = #{resourceId,jdbcType=CHAR}
+	</select>
+	<select id="selectByResourceUri" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		t_action_resource.id,
+		t_action_resource.actionId,
+		t_action_resource.resourceId
+		FROM t_action_resource
+		INNER JOIN t_resource ON t_action_resource.resourceId = t_resource.id
+		WHERE t_resource.uri = #{uri,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteById" parameterType="java.lang.String">
+		DELETE FROM t_action_resource
+		WHERE id = #{id,jdbcType=CHAR}
+	</delete>
+	<delete id="deleteByActionId" parameterType="java.lang.String">
+		DELETE FROM
+		t_action_resource
+		WHERE actionId = #{actionId,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="Action2Resource">
+		INSERT INTO t_action_resource (id, actionId, resourceId)
+		VALUES (#{id,jdbcType=CHAR}, #{actionId,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR})
+	</insert>
+	<update id="updateById" parameterType="Action2Resource">
+		UPDATE t_action_resource
+		SET actionId = #{actionId,jdbcType=CHAR},
+		resourceId = #{resourceId,jdbcType=CHAR}
+		WHERE id = #{id,jdbcType=CHAR}
+	</update>
+</mapper>

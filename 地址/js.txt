@@ -1,0 +1,4 @@
+//js高级用法
+http://www.jb51.net/article/21339.htm
+//js判断为空Null与字符串为空简写方法
+http://www.jb51.net/article/47234.htm
